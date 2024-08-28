@@ -1,0 +1,18 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+mat-card {
+  max-width: 550px;
+  height: auto;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: -2px 4px 11px 5px #caa0a0;
+}
+
+.form-container {
+  margin-bottom: 5px;
+}

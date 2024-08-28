@@ -1,0 +1,205 @@
+<mat-stepper #stepper linear>
+  <mat-step
+    [stepControl]="firstFormGroup"
+    errorMessage="User Details Required."
+  >
+    <form
+      [formGroup]="firstFormGroup"
+      (ngSubmit)="onSubmit()"
+      class="form-container"
+    >
+      <ng-template matStepLabel>Fill the user's details</ng-template>
+
+      <!-- Name -->
+      <mat-form-field class="form-field-container">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Full Name"
+          formControlName="fullName"
+          required
+        />
+        <mat-icon matSuffix>badge</mat-icon>
+        <mat-error
+          *ngIf="firstFormGroup.get('fullName')?.invalid && (firstFormGroup.get('fullName')?.dirty || firstFormGroup.get('fullName')?.touched)"
+        >
+          <ng-container
+            *ngIf="firstFormGroup.get('fullName')?.errors?.required"
+          >
+            Full name is required.
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field class="form-field-container">
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          type="email"
+          placeholder="user@example.com"
+          formControlName="email"
+          required
+        />
+
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error
+          *ngIf="firstFormGroup.get('email')?.hasError('required') && (firstFormGroup.get('email')?.dirty || firstFormGroup.get('email')?.touched)"
+        >
+          Email is <strong>Required</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="firstFormGroup.get('email')?.hasError('email') && (firstFormGroup.get('email')?.dirty || firstFormGroup.get('email')?.touched)"
+        >
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field class="form-field-container">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+          required
+        />
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error
+          *ngIf="firstFormGroup.get('password')?.hasError('required') && (firstFormGroup.get('password')?.dirty || firstFormGroup.get('password')?.touched)"
+        >
+          Password is required
+        </mat-error>
+        <mat-error
+          *ngIf="firstFormGroup.get('password')?.hasError('minlength') && (firstFormGroup.get('password')?.dirty || firstFormGroup.get('password')?.touched)"
+        >
+          Password must be at least 6 characters long
+        </mat-error>
+      </mat-form-field>
+
+      <!-- terminal select form  -->
+
+      <mat-form-field class="form-field-container">
+        <mat-label>Terminal</mat-label>
+        <mat-select formControlName="terminal" required>
+          <mat-option *ngFor="let terminal of terminals" [value]="terminal"
+            >{{ terminal }}</mat-option
+          >
+        </mat-select>
+
+        <mat-error
+          *ngIf="firstFormGroup.get('terminal')?.invalid && (firstFormGroup.get('terminal')?.dirty || firstFormGroup.get('terminal')?.touched) "
+        >
+          Terminal is <strong> required</strong>.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field-container">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role" required>
+          <mat-option *ngFor="let role of roles" [value]="role"
+            >{{ role }}</mat-option
+          >
+        </mat-select>
+
+        <mat-error
+          *ngIf="firstFormGroup.get('role')?.invalid && (firstFormGroup.get('role')?.dirty || firstFormGroup.get('role')?.touched)"
+          >Please select Role
+        </mat-error>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperNext type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step label="Confirm new staff details">
+    <h2>New Staff Details</h2>
+    <mat-list>
+      <mat-list-item>
+        Full Name : {{ firstFormGroup.get('fullName')?.value }}
+      </mat-list-item>
+      <mat-list-item>
+        Email : {{ firstFormGroup.get('email')?.value }}
+      </mat-list-item>
+      <mat-list-item>
+        Terminal : {{ firstFormGroup.get('terminal')?.value }}
+      </mat-list-item>
+      <mat-list-item>
+        Role: {{ firstFormGroup.get('role')?.value }}
+      </mat-list-item>
+      <mat-list-item>
+        Full Name : {{ firstFormGroup.get('fullName')?.value }}
+      </mat-list-item>
+      <mat-list-item> Created By : Admin </mat-list-item>
+      <mat-list-item> Status: Active </mat-list-item>
+    </mat-list>
+    <div>
+      <p>Go to a different step to see the error state</p>
+      <button mat-button matStepperPrevious>Back</button>
+      <button
+        mat-button
+        matStepperNext
+        type="button"
+        (click)="onSubmit()"
+        [disabled]="firstFormGroup.invalid"
+      >
+        Create
+      </button>
+    </div>
+  </mat-step>
+</mat-stepper>
+
+<style>
+  /* .mat-mdc-form-field {
+    margin: 16px 16px 0 0;
+  }
+
+  .mat-stepper-horizontal {
+    margin-top: 15px;
+  }
+
+  .form-container {
+    height: auto;
+    width: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-field-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px; /* Adjust based on your design requirements */
+    margin: 0 auto;
+  }
+
+  .form-field {
+    margin-bottom: 16px; /* Add spacing between fields */
+  }
+
+  .mat-stepper-horizontal {
+    margin-top: 15px;
+    width: auto;
+  }
+
+  .mat-form-field {
+    width: 100%; /* Ensure form fields take full width */
+  }
+
+  mat-horizontal-stepper-content{
+    width: auto;
+  }
+</style>
+

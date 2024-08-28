@@ -1,0 +1,55 @@
+#services:
+#  mysql:
+#    image: mysql:8.0
+#    container_name: aop_mysql
+#    environment:
+#      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+#      MYSQL_DATABASE: ${MYSQL_DATABASE}
+#      MYSQL_USER: ${MYSQL_USER}
+#      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#    ports:
+#      - "3307:3306"
+#    networks:
+#      - app-network
+#    healthcheck:
+#      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-p$MYSQL_PASSWORD" ]
+#      interval: 10s
+#      retries: 5
+#      start_period: 30s
+#      timeout: 5s
+#
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: aop_spring_boot_app
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/crud
+#      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+#      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - mysql
+##    command: ["java", "-jar", "app.jar"]
+#
+#    networks:
+#      - app-network
+#
+#  angular:
+#    build:
+#      context: ../crud-front-end
+#      dockerfile: Dockerfile
+#    container_name: aop-frontend
+#    ports:
+#      - "4200:80"
+#    volumes:
+#      - "C:/Users/USER/Desktop/FullStack Angular Spring Boot/crud-front-end/nginx.conf:/etc/nginx/conf.d/nginx.conf:ro"
+#      #    command: ["nginx", "-g", "daemon off;"]
+#    networks:
+#      - app-network
+#
+#
+#networks:
+#  app-network:
+#    driver: bridge

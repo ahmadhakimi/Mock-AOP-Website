@@ -1,0 +1,375 @@
+<mat-card>
+  <mat-card-title>Company Registration Form</mat-card-title>
+  <mat-card-content>
+    <mat-stepper linear #stepper>
+      <mat-step
+        [stepControl]="firstFormGroup"
+        errorMessage="Company Details required"
+      >
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Fill out company details</ng-template>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Staff ID</mat-label>
+            <input matInput formControlName="staffId" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Company Name</mat-label>
+            <input
+              matInput
+              formControlName="companyName"
+              placeholder="xyz co. ltd"
+              required
+            />
+
+            <mat-error
+              *ngIf="firstFormGroup.get('companyName')?.hasError('required')"
+            >
+              Company name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <!-- ROC expired date -->
+          <mat-form-field appearance="outline">
+            <mat-label>ROC Expire Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="rocExpDate"
+              required
+            />
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error
+              *ngIf="firstFormGroup.get('rocExpDate')?.hasError('required')"
+            >
+              ROC Expiry date is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="inline-fields">
+            <!-- tel no -->
+            <mat-form-field appearance="outline">
+              <mat-label>Telephone number</mat-label>
+              <span matTextPrefix>+60 &nbsp;</span>
+              <input
+                matInput
+                type="tel"
+                formControlName="telNo"
+                placeholder="12-345-6789"
+                required
+              />
+              <mat-icon matSuffix>call</mat-icon>
+              <mat-error
+                *ngIf="firstFormGroup.get('telNo')?.hasError('pattern')"
+              >
+                Number must contain <strong>10 - 11 digits</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="firstFormGroup.get('telNo')?.hasError('required')"
+              >
+                Phone number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Fax no -->
+            <mat-form-field appearance="outline">
+              <mat-label>Fax number</mat-label>
+              <span matTextPrefix>+60 &nbsp;</span>
+              <input
+                matInput
+                type="tel"
+                formControlName="faxNo"
+                placeholder="12-345-6789"
+                required
+              />
+              <mat-icon matSuffix>call</mat-icon>
+              <mat-error
+                *ngIf="firstFormGroup.get('faxNo')?.hasError('pattern')"
+              >
+                Number must contain <strong>10 - 11 digits</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="firstFormGroup.get('faxNo')?.hasError('required')"
+              >
+                Fax number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- company email form -->
+
+          <mat-form-field appearance="outline">
+            <mat-label>Company Email</mat-label>
+            <input
+              matInput
+              type="email"
+              placeholder="user@xyz.com"
+              formControlName="companyEmail"
+              required
+            />
+            <mat-error
+              *ngIf="firstFormGroup.get('companyEmail')?.hasError('required')"
+            >
+              Company Email is <strong>required</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="firstFormGroup.get('companyEmail')?.hasError('email')"
+            >
+              Invalid email address
+            </mat-error>
+          </mat-form-field>
+
+          <!-- company status form -->
+
+          <mat-form-field appearance="outline">
+            <mat-label>Company Status</mat-label>
+            <mat-select formControlName="companyStatus" required>
+              <mat-option>None</mat-option>
+              <mat-option
+                *ngFor="let status of companyStatuses"
+                [value]="status"
+                >{{ status }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+
+          <mat-error
+            *ngIf="firstFormGroup.get('companyStatus')?.hasError('required')"
+            >Please Select One</mat-error
+          >
+
+          <div class="inline-fields">
+            <!-- create by form  -->
+            <mat-form-field appearance="outline">
+              <mat-label>Created By:</mat-label>
+              <input
+                matInput
+                placeholder="ex. admin"
+                formControlName="createdBy"
+                required
+              />
+              <mat-error
+                *ngIf="firstFormGroup.get('createdBy')?.hasError('required')"
+              >
+                Create by is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <!-- updated by form  -->
+            <mat-form-field appearance="outline">
+              <mat-label>updated By:</mat-label>
+              <input
+                matInput
+                placeholder="ex. admin"
+                formControlName="updatedBy"
+                required
+              />
+              <mat-error
+                *ngIf="firstFormGroup.get('updatedBy')?.hasError('required')"
+              >
+                Update by is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- second stepper form  -->
+
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup" class="form-textarea">
+          <ng-template matStepLabel>Fill remarks and address</ng-template>
+
+          <!-- address form -->
+          <mat-form-field appearance="outline" class="textarea">
+            <mat-label>Address</mat-label>
+            <textarea
+              type="address"
+              matInput
+              formControlName="address"
+              placeholder="St. 123, Manchester, England"
+              atTextareaAutosize
+              matAutosizeMinRows="1"
+              matAutosizeMaxRows="5"
+              required
+            ></textarea>
+            <mat-error
+              *ngIf="secondFormGroup.get('address')?.hasError('required')"
+            >
+              Address is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <!-- remarks form  -->
+          <mat-form-field appearance="outline" class="textarea">
+            <mat-label>remarks</mat-label>
+            <textarea
+              matInput
+              formControlName="remarks"
+              placeholder="company....."
+              atTextareaAutosize
+              matAutosizeMinRows="1"
+              matAutosizeMaxRows="5"
+            ></textarea>
+          </mat-form-field>
+          <div class="button-form">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- third form stepper for attachment  -->
+
+      <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel
+            >Attachment for company registration</ng-template
+          >
+
+          <!-- Use a div with some styling instead of mat-form-field -->
+          <div class="file-upload-container">
+            <label for="attachment">Attachment</label>
+            <input
+              id="attachment"
+              type="file"
+              (change)="onFileChange($event)"
+              accept=".pdf"
+              required
+            />
+            <mat-error *ngIf="attachmentError">{{ attachmentError }}</mat-error>
+          </div>
+          <div class="button-form">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Company Registration Details</ng-template>
+
+        <mat-accordion class="headers-align">
+          <!-- first panel expansion -->
+          <mat-expansion-panel
+            [expanded]="step === 0"
+            (opened)="setStep(0)"
+            hideToggle
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title> Company Registration Details </mat-panel-title>
+              <mat-panel-description>
+                summary of company details
+                <mat-icon>info</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-list-item>
+                Staff ID: {{ firstFormGroup.get("staffId")?.value }}
+              </mat-list-item>
+
+              <mat-list-item>
+                Company Name: {{ firstFormGroup.get("companyName")?.value }}
+              </mat-list-item>
+
+              <mat-list-item>
+                ROC EXPIRED DATE: {{ firstFormGroup.get("rocExpDate")?.value }}
+              </mat-list-item>
+
+              <mat-list-item>
+                Telephone Number: +60{{ firstFormGroup.get("telNo")?.value }}
+              </mat-list-item>
+
+              <mat-list-item>
+                Fax Number: +60{{ firstFormGroup.get("faxNo")?.value }}
+              </mat-list-item>
+
+              <mat-list-item>
+                Company Email: {{ firstFormGroup.get("companyEmail")?.value }}
+              </mat-list-item>
+
+              <mat-list-item>
+                Company Status: {{ firstFormGroup.get("companyStatus")?.value }}
+              </mat-list-item>
+
+              <mat-list-item>
+                Created By: {{ firstFormGroup.get("createdBy")?.value }}
+              </mat-list-item>
+
+              <mat-list-item>
+                Updated By: {{ firstFormGroup.get("updatedBy")?.value }}
+              </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+
+          <!-- second panel expansion -->
+          <mat-expansion-panel
+            [expanded]="step === 1"
+            (opened)="setStep(1)"
+            hideToggle
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title> Company Address & Remarks</mat-panel-title>
+              <mat-panel-description>
+                details for company address and remarks by register
+                <mat-icon>source_environment</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-list-item>
+                Company Address: {{ secondFormGroup.get("address")?.value }}
+              </mat-list-item>
+
+              <mat-list-item>
+                Remarks: {{ secondFormGroup.get("remarks")?.value }}
+              </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+
+          <!-- third panel expansion -->
+          <mat-expansion-panel
+            [expanded]="step === 2"
+            (opened)="setStep(2)"
+            hideToggle
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title> Supporting Documentation </mat-panel-title>
+              <mat-panel-description>
+                Your attachment document
+                <mat-icon>description</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div *ngIf="selectedFile">
+              <p>Selected File: {{ selectedFile.name }}</p>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button
+            mat-button
+            (click)="onSubmit()"
+            [disabled]="
+              firstFormGroup.invalid ||
+              secondFormGroup.invalid ||
+              thirdFormGroup.invalid
+            "
+          >
+            Submit
+          </button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-card-content>
+</mat-card>

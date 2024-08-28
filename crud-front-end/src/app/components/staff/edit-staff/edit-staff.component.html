@@ -1,0 +1,67 @@
+<mat-card>
+  <mat-card-header>
+    <h2>Update Staff</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="editForm" (ngSubmit)="onSaveClick()">
+      <mat-form-field appearance="fill">
+        <mat-label>Full Name</mat-label>
+        <input type="text" matInput formControlName="fullName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" />
+
+        <!-- chech if the email is valid or not  -->
+        <mat-error *ngIf="editForm.get('email')?.hasError('email')">
+          Not a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> Terminal </mat-label>
+        <mat-select formControlName="terminal">
+          <mat-option *ngFor="let terminal of terminals" [value]="terminal">{{
+            terminal
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> Role </mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let role of roles" [value]="role">{{
+            role
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> Status </mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let status of statuses" [value]="status">{{
+            status
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Created By</mat-label>
+        <input type="text" matInput formControlName="createdBy" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Updated By</mat-label>
+        <input type="text" matInput formControlName="updatedBy" />
+      </mat-form-field>
+
+      <div class="button-container">
+        <button mat-button color="accent" type="button" (click)="onNoClick()">
+          Cancel
+        </button>
+        <button mat-button color="primary" type="submit">Update</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

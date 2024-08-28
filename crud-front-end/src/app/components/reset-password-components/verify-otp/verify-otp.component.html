@@ -1,0 +1,53 @@
+<div class="main">
+  <mat-card>
+    <div class="header-container">
+      <mat-card-header>
+        <mat-card-title>Verify OTP</mat-card-title>
+      </mat-card-header>
+    </div>
+
+    <mat-card-content>
+      <form [formGroup]="verifyOtpForm" (ngSubmit)="onSubmit()">
+        <div class="form-container">
+          <mat-form-field>
+            <mat-label>OTP number</mat-label>
+            <input
+              type="number"
+              matInput
+              placeholder="Enter your OTP"
+              formControlName="otpNumber"
+              required
+            />
+            @if (verifyOtpForm.get('otpNumber')?.hasError('required')) {
+            <mat-error>OTP number is required </mat-error>
+            } @if (verifyOtpForm.get('optNumber')?.hasError('pattern')) {
+            <mat-error>OTP number must be in number format</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="resend-link-container">
+          @if (showResendLink) {
+          <div class="resend-link">
+            <a href="#" (click)="onResendOtp($event)">Didn't receive OTP?</a>
+          </div>
+          }
+        </div>
+
+        <div class="button-container">
+          <button color="warn" (click)="onCancel()" mat-raised-button>
+            Cancel
+          </button>
+          <button
+            type="submit"
+            color="primary"
+            [disabled]="verifyOtpForm.invalid"
+            mat-raised-button
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

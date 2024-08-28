@@ -1,0 +1,124 @@
+<mat-card>
+  <mat-card-title>Pass Application Form</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="passForm" class="scrollable-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Company ID</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Purpose</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Pass Application Number</mat-label>
+        <input type="number" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Pass Application Name</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>IC Number</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Passport Number</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Terminal</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let terminal of Terminals" [value]="terminal">
+            {{ terminal }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-section">
+        <mat-label>Select Areas</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Areas selection">
+          <mat-chip-row *ngFor="let area of areas()" (removed)="remove(area)">
+            {{ area }}
+            <button matChipRemove [attr.aria-label]="'Remove ' + area">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        </mat-chip-grid>
+        <input
+          placeholder="Choose related area. Can choose more than one"
+          #areaInput
+          [matChipInputFor]="chipGrid"
+          [matAutocomplete]="auto"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)"
+        />
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="selected($event)"
+        >
+          <mat-option *ngFor="let area of filteredArea()" [value]="area">
+            {{ area }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Application Status</mat-label>
+        <mat-select>
+          <mat-option
+            *ngFor="let status of ApplicationStatuses"
+            [value]="status"
+          >
+            {{ status }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Applicant Type</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let type of ApplicantTypes" [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Submitted By</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Date Submitted</mat-label>
+        <input matInput [matDatepicker]="picker" />
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>User's Role</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let role of Roles" [value]="role">
+            {{ role }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="file-upload-container">
+        <label for="attachment">Attachment</label>
+        <input id="attachment" type="file" accept=".pdf" />
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,65 @@
+<div class="main-container">
+  <mat-card>
+    <div class="header-container">
+      <mat-card-title>
+        <h2>{{ staff.fullName }}'s Details</h2>
+      </mat-card-title>
+    </div>
+
+    <div class="body-container">
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>
+            <span matListItemTitle>ID</span>
+            <span matListItemLine>{{ staff.id }} </span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle>Full Name</span>
+            <span matListItemLine>{{ staff.fullName }}</span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle>Email</span>
+            <span matListItemLine>{{ staff.email }}</span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle>Terminal</span>
+            <span matListItemLine>{{ staff.terminal }} </span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle>Role</span>
+            <span matListItemLine>{{ staff.role }}</span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle>Created By</span>
+            <span matListItemLine>{{ staff.createdBy }}</span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle>Updated By</span>
+            <span matListItemLine>{{ staff.updatedBy }}</span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle>Created at</span>
+            <span matListItemLine>{{ staff.createdAt }}</span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle>Updated at</span>
+            <span matListItemLine>{{ staff.updatedAt }}</span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle>Delete Status</span>
+            <span matListItemLine>{{ staff.deleted }}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>

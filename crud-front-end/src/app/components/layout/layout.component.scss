@@ -1,0 +1,67 @@
+.sidenav-container {
+  height: 100vh;
+  //   display: flex;
+  //   flex-direction: column;
+  width: auto;
+  margin: 0;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav {
+  width: 200px;
+}
+
+mat-sidenav mat-nav-list {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-sidenav mat-nav-list button,
+a {
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  // justify-content: center;
+  // align-items: center;
+}
+
+mat-drawer-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.account-button {
+  transform: scale(1.5);
+}
+
+.active-link {
+  background-color: var(--primary-color);
+  border-radius: 0px 35px 35px 0px;
+}
+
+.sidenav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item {
+  display: flex;
+  justify-content: space-around; /* Space between icon and text */
+  align-items: center; /* Center items vertically */
+  width: 100%; /* Ensure the container takes full width */
+}
+
+.mat-icon {
+  margin-left: 0; /* Space between icon and text */
+}
+
+.nav-text {
+  // flex: 1; /* Allows the text to take up remaining space */
+  text-align: center; /* Align text to the right */
+}

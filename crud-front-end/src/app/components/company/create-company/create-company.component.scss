@@ -1,0 +1,168 @@
+// mat-card {
+//   mat-card-title {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     text-align: center;
+//     padding: 2rem 0;
+//   }
+
+//   mat-card-content {
+//     form {
+//       margin-top: 1.3rem;
+//       //   display: flex;
+//       //   width: 100%;
+//       display: block;
+//     }
+
+//     mat-form-field {
+//       margin: 0 1.5rem;
+//       justify-content: space-evenly;
+//     }
+//   }
+// }
+
+// .file-upload-container {
+//   display: block;
+//   flex-direction: column;
+//   margin-top: 16px;
+// }
+
+// .file-upload-container label {
+//   font-weight: bold;
+//   margin-bottom: 8px;
+// }
+
+// .file-upload-container input[type="file"] {
+//   border: 1px solid #ccc;
+//   border-radius: 4px;
+//   padding: 8px;
+//   font-size: 14px;
+// }
+
+// // mat list
+
+// mat-list {
+//   width: 100%;
+//   display: flexbox;
+// }
+
+// // accordion
+// .headers-align .mat-expansion-panel-header-description {
+//   justify-content: space-between;
+//   align-items: center;
+// }
+
+// .headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+//   margin-left: 8px;
+// }
+
+// Base styles for the card
+mat-card {
+  margin: 20px auto;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  mat-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px;
+    color: #3f51b5; // Angular Material primary color
+  }
+}
+
+// Styling for the form fields
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+
+  mat-label {
+    font-weight: bold;
+  }
+
+  mat-error {
+    font-size: 0.875rem;
+    color: #f44336; // Angular Material error color
+  }
+}
+
+// Styles for the stepper
+mat-stepper {
+  margin: 20px 0;
+
+  mat-step {
+    margin: 16px 0;
+
+    ng-template[matStepLabel] {
+      font-weight: bold;
+      color: #3f51b5;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+// Styles for buttons
+.button-form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  button {
+    flex: 1;
+    margin: 0 10px;
+  }
+}
+
+// Styles for the file upload section
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+
+  label {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  input[type="file"] {
+    border: 1px dashed #3f51b5;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  mat-error {
+    margin-top: 8px;
+  }
+}
+
+// Styles for the expansion panels
+mat-expansion-panel {
+  margin: 10px 0;
+
+  mat-panel-title {
+    font-weight: bold;
+  }
+
+  mat-panel-description {
+    font-size: 0.9rem;
+    color: #757575; // Angular Material text hint color
+  }
+}
+
+.inline-fields {
+  display: flex;
+  gap: 16px; /* Adjust the gap as needed */
+  margin-bottom: 16px;
+}
+
+.inline-fields mat-form-field {
+  flex: 1;
+  min-width: 200px; /* Ensure form fields have a minimum width */
+}

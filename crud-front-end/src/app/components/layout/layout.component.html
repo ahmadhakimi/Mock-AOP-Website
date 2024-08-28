@@ -1,0 +1,100 @@
+<mat-sidenav-container [hasBackdrop]="true" class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" [opened]="sideNavOpen">
+    <mat-nav-list>
+      <button mat-icon-button (click)="toggleSideNav()">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <a mat-list-item routerLink="/home" routerLinkActive="active-link">
+        <span class="nav-item">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="home"
+          ></mat-icon>
+          <span class="nav-text">Home</span>
+        </span>
+      </a>
+
+      <a mat-list-item routerLink="/staff" routerLinkActive="active-link">
+        <span class="nav-item">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example support_agent icon"
+            fontIcon="support_agent"
+          ></mat-icon>
+          <span class="nav-text">Staff</span>
+        </span>
+      </a>
+
+      <a mat-list-item routerLink="/company" routerLinkActive="active-link">
+        <span class="nav-item">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example corporate_fare icon"
+            fontIcon="corporate_fare"
+          ></mat-icon>
+          <span class="nav-text">Company</span>
+        </span>
+      </a>
+
+      <a mat-list-item routerLink="/pass" routerLinkActive="active-link">
+        <span class="nav-item">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example cairplane_ticket icon"
+            fontIcon="airplane_ticket"
+          ></mat-icon>
+          <span class="nav-text">Pass</span>
+        </span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+        (click)="toggleSideNav()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <h2>Welcome To AVSEC Online</h2>
+      <div class="spacer"></div>
+
+      <!-- toggle theme  -->
+
+      <mat-slide-toggle [(ngModel)]="isChecked" (change)="toggleTheme($event)">
+        {{ isChecked ? "Dark Mode" : "light Mode" }}
+      </mat-slide-toggle>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="account-button">
+        <mat-icon class="account-circle-icon">account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="userProfile()"
+          routerLink="/user-profile"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>person</mat-icon>
+          <span>User Profile</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>password</mat-icon>
+          <span>Change Password</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <!-- add routing for component contents  -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

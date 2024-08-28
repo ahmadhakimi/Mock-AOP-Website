@@ -1,0 +1,97 @@
+<h1 mat-dialog-title>Update Company</h1>
+<div mat-dialog-content>
+  <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Company Name</mat-label>
+      <input matInput formControlName="companyName" />
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>ROC Expiration Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="rocExpDate" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-hint>DD/MM/YYYY</mat-hint>
+    </mat-form-field>
+
+    <div class="inline-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Telephone number</mat-label>
+        <span matTextPrefix>+60 &nbsp;</span>
+        <input
+          matInput
+          type="tel"
+          formControlName="telNo"
+          placeholder="123456789"
+        />
+        <mat-icon matSuffix>call</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Fax number</mat-label>
+        <span matTextPrefix>+60 &nbsp;</span>
+        <input
+          matInput
+          type="tel"
+          formControlName="faxNo"
+          placeholder="123456789"
+        />
+        <mat-icon matSuffix>fax</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="companyEmail" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Company Status</mat-label>
+      <mat-select formControlName="companyStatus">
+        <mat-option
+          *ngFor="let status of companyStatusOptions"
+          [value]="status"
+          >{{ status }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Created By</mat-label>
+      <input type="text" matInput formControlName="createdBy" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Updated By</mat-label>
+      <input type="text" matInput formControlName="updatedBy" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <textarea matInput formControlName="address"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Remarks</mat-label>
+      <textarea matInput formControlName="remarks"></textarea>
+    </mat-form-field>
+
+    <div class="file-upload-container">
+      <label for="attachment">Attachment</label>
+      <input
+        #fileInput
+        type="file"
+        formControlName="attachment"
+        (change)="onFileChange($event)"
+      />
+    </div>
+
+    <mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button type="submit">Save</button>
+    </mat-dialog-actions>
+  </form>
+</div>

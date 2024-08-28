@@ -1,0 +1,42 @@
+.main {
+  height: 100vh;
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-container {
+    display: flex;
+    position: relative;
+    width: 20vw;
+    margin: 10px 5px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .resend-link-container {
+    text-align: center;
+    margin: 1.5rem auto;
+  }
+
+  .button-container {
+    margin: 4px auto;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+mat-card {
+  border-radius: 30px;
+  box-shadow: 2px 2px 12px 1px #d8d2d2;
+}

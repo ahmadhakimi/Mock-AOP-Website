@@ -1,0 +1,23 @@
+mat-card {
+  width: auto;
+  margin: 5px;
+  box-sizing: border-box;
+  padding: 3rem;
+
+  mat-card-header {
+    font-size: 20px;
+    align-items: center;
+  }
+
+  mat-card-content {
+    display: flex;
+
+    mat-form-field {
+      margin: 3px 6px;
+    }
+  }
+
+  mat-card-actions {
+    justify-content: flex-end;
+  }
+}

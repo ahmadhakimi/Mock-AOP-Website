@@ -1,0 +1,19 @@
+<mat-card appearance="outlined">
+  <button mat-button>Button 1</button>
+  <button mat-button>Button 2</button>
+  <button mat-button>Button 3</button>
+</mat-card>
+
+<mat-card appearance="outlined">
+  <mat-form-field>
+    <mat-label>Select Theme</mat-label>
+    <mat-select (selectionChange)="onThemeChange($event.value)">
+      <mat-option value="light">Light Theme</mat-option>
+      <mat-option value="dark">Dark Theme</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+
+
+
+<router-outlet></router-outlet>

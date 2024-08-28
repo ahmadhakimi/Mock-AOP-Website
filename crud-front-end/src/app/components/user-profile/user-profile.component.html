@@ -1,0 +1,89 @@
+<div class="d-flex justify-content-md-center align-items-md-start vh-100 mt-5">
+  <mat-card class="w-50 py-lg-5">
+    <mat-card-header
+      class="m-auto justify-content-center align-items-center py-3"
+    >
+      <mat-card-title>User Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="updateProfileForm" (ngSubmit)="onSaveClick()">
+        <!-- 
+            <mat-form-field appearance="fill">
+              <mat-label>ID</mat-label>
+              <input type="text" matInput formControlName="staff_id" />
+            </mat-form-field> -->
+
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Full Name</mat-label>
+              <input type="text" matInput formControlName="staff_fullname" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>User Name</mat-label>
+              <input type="text" matInput formControlName="staff_username" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="staff_email" />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Role</mat-label>
+              <input type="text" matInput formControlName="staff_role" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Terminal</mat-label>
+              <input type="text" matInput formControlName="staff_terminal" />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Created By</mat-label>
+              <input type="text" matInput formControlName="staff_created_by" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Updated By</mat-label>
+              <input type="text" matInput formControlName="staff_updated_by" />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Created At</mat-label>
+              <input type="date" matInput formControlName="staff_created_at" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Updated At</mat-label>
+              <input type="date" matInput formControlName="staff_updated_at" />
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button class="m-auto justify-content-md-center">
+        Update
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
