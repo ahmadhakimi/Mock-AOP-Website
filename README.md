@@ -62,8 +62,11 @@ A full-fledge full-stack web application based on the real-world project of AVSE
 - Frontend Application: http://localhost:4200
 - Registration UI is not built yet ⛔, create new staff using Postman
 - Login existing user at http://localhost:4200/login
+  
   ![image](https://github.com/user-attachments/assets/bc7efba9-a967-465f-8f60-b45f5b5782b7)
+  
 - navigate through each page after authentication. Example UI for staff management
+  
   ![image](https://github.com/user-attachments/assets/4bafff02-3e90-41b3-a92d-7da9932695ae)
 
 # **Contributing** 🤝
