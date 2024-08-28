@@ -76,7 +76,7 @@ Commit Your Changes: git commit -am 'Add new feature'
 Push to the Branch: git push origin feature/new-feature
 Create a Pull Request: Submit a pull request on GitHub.
 
-License 📜
+# **License** 📜
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 Acknowledgments 🙏
