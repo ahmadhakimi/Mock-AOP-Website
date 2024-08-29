@@ -71,15 +71,17 @@ A full-fledge full-stack web application based on the real-world project of AVSE
 
 # **Contributing** 🤝
 Fork the Repository: Create your fork of the repository on GitHub.
-Create a Branch: git checkout -b feature/new-feature
-Commit Your Changes: git commit -am 'Add new feature'
-Push to the Branch: git push origin feature/new-feature
-Create a Pull Request: Submit a pull request on GitHub.
+1) Create a Branch: git checkout -b feature/new-feature
+2) Commit Your Changes: git commit -am 'Add new feature'
+3) Push to the Branch: git push origin feature/new-feature
+4) Create a Pull Request: Submit a pull request on GitHub.
+
+   *Thanks for helping me this project* 🫰
 
 # **License** 📜
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-Acknowledgments 🙏
+## Acknowledgments 🙏
 - Spring Boot
 - Angular
 - ng-Bootstrap
