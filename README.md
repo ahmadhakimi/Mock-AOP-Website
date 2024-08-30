@@ -67,7 +67,8 @@ A full-fledge full-stack web application based on the real-world project of AVSE
   
 - navigate through each page after authentication. Example UI for staff management
   
-  ![image](https://github.com/user-attachments/assets/4bafff02-3e90-41b3-a92d-7da9932695ae)
+  ![image](https://github.com/user-attachments/assets/7315aeba-f820-4bdb-b434-d56e72e3ea57)
+
 
 # **Contributing** 🤝
 Fork the Repository: Create your fork of the repository on GitHub.
